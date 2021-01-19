@@ -226,3 +226,27 @@ dev.off()
 pdf("data/Volcano_plot_fex10.pdf", width=7, height = 9)
 vol_2
 dev.off()
+
+##############################
+# Venn diagram visualization #
+##############################
+
+## Venn diagram of upregulated genes
+up_venn <- list('2.5% FE' = up_fex2$Symbol, '10% FE' = up_fex10$Symbol)
+
+v <- venn.diagram(up_venn, cat.fontfamily = "Arial",
+                  cat.cex = 0, cex = 0, lwd =3, fontfamily ="Arial", 
+                  filename = "data/Venn_Up_2vs10.tiff", imagetype = "tiff",
+                  height = 600, width = 600, resolution = 300, units = "px",
+                  col=c("forestgreen", "darkgoldenrod1"),
+                  fill = c(alpha("forestgreen",0.7), alpha("darkgoldenrod1",0.7)))
+
+## Venn diagram of upregulated genes
+down_venn <- list('2.5% FE' = down_fex2$Geneid, '10% FE' = down_fex10$Geneid)
+
+v <- venn.diagram(up_venn, cat.fontfamily = "Arial",
+                  cat.cex = 0, cex = 0, lwd =3, fontfamily ="Arial", 
+                  filename = "data/Venn_Down_2vs10.tiff", imagetype = "tiff",
+                  height = 600, width = 600, resolution = 300, units = "px",
+                  col=c("deepskyblue3", "brown3"),
+                  fill = c(alpha("deepskyblue3",0.7), alpha("brown3",0.7)))
